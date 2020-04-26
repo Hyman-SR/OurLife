@@ -18,7 +18,8 @@ public class BaseResult<T> {
 
     private T data;
 
-    protected BaseResult() {}
+    protected BaseResult() {
+    }
 
     protected BaseResult(long code, String message, T data) {
         this.code = code;
@@ -43,7 +44,7 @@ public class BaseResult<T> {
      * @param message
      * @return
      */
-    public static <T> BaseResult<T> success(T data, String message)  {
+    public static <T> BaseResult<T> success(T data, String message) {
         return new BaseResult<>(ResultCode.SUCCESS.getCode(), message, data);
     }
 
