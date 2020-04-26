@@ -18,7 +18,7 @@
     <dependencies>
         <dependency>
             <groupId>com.ourlife.base</groupId>
-            <artifactId>base-security</artifactId>
+            <artifactId>base-core</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>

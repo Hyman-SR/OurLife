@@ -1,4 +1,4 @@
-package com.ourlife.base.security.service;
+package com.ourlife.base.core.service;
 
 import java.util.List;
 import java.util.Map;

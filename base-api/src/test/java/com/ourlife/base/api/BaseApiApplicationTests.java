@@ -1,11 +1,9 @@
 package com.ourlife.base.api;
 
-import com.ourlife.base.security.service.RedisService;
+import com.ourlife.base.core.service.RedisService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest
 class BaseApiApplicationTests {

@@ -1,6 +1,6 @@
-package com.ourlife.base.security.service.impl;
+package com.ourlife.base.core.service.impl;
 
-import com.ourlife.base.security.service.RedisService;
+import com.ourlife.base.core.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;

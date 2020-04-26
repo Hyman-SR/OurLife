@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ourlife.base</groupId>
-	<artifactId>common-mq</artifactId>
+	<artifactId>base-common</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>common-mq</name>
+	<name>base-common</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

@@ -12,7 +12,7 @@
 
 	<modules>
 		<module>base-common</module>
-		<module>base-security</module>
+		<module>base-core</module>
         <module>base-api</module>
 	</modules>
 
