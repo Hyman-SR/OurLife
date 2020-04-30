@@ -16,6 +16,6 @@ public class IndexController {
 
     @GetMapping
     public BaseResult getIndex() {
-        return BaseResult.success(null, "this is index");
+        return BaseResult.success();
     }
 }

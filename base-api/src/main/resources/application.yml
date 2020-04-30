@@ -1,6 +1,8 @@
 spring.profiles.active: dev
 server.port: 8080
 logging.level.org.springframework.boot.autoconfigure: ERROR
+logging.level.com.ourlife.base: debug
+logging.level.root: INFO
 
 
 

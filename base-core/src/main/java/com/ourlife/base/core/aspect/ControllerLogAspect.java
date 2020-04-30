@@ -1,8 +1,11 @@
 package com.ourlife.base.core.aspect;
 
+import com.ourlife.base.common.exception.BaseException;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -31,7 +34,7 @@ public class ControllerLogAspect {
     @Around("controllerLogAspect()")
     public Object around(ProceedingJoinPoint pjp) throws Throwable {
         // 获取当前请求
-        HttpServletRequest request =((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
         //记录请求内容
         log.info("request info ==> [ip : <{}>, http_method : <{}>, uri : <{}>, params : <{}>]",
                 request.getRemoteAddr(),

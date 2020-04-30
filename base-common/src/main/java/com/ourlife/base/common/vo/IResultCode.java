@@ -6,7 +6,17 @@ package com.ourlife.base.common.vo;
  */
 public interface IResultCode {
 
+    /**
+     * 错误码
+     *
+     * @return
+     */
     long getCode();
 
+    /**
+     * 错误信息提示
+     *
+     * @return
+     */
     String getMessage();
 }
