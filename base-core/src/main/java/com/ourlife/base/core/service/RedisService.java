@@ -12,6 +12,10 @@ import java.util.Set;
  */
 public interface RedisService {
 
+    /*----------redis锁相关的操作---------*/
+
+
+
     /*----------string类型的操作---------*/
 
     /**
