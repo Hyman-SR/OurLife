@@ -62,7 +62,7 @@ public class RedisDistributeLock implements DistributeLock {
                 //如果获取锁成功，则将requestId设置到threadLocal中
                 currentThreadLocal.set(requestId);
                 log.debug("thread id:[{}] get lock:[{}] success", requestId, lockKey);
-                return Boolean.TRUE;
+                return true;
             }
             //否则循环等待，在timeout时间内仍未获取锁，则获取失败
             long l = System.currentTimeMillis() - start;
