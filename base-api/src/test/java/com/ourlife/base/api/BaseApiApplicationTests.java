@@ -5,6 +5,7 @@ import com.ourlife.base.core.service.RedisService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.annotation.Resource;
 
@@ -16,6 +17,10 @@ class BaseApiApplicationTests {
 
     @Resource(name = "redisDistributeLock")
     private DistributeLock distributeLock;
+
+    public static void main(String[] args) {
+        new ClassPathXmlApplicationContext();
+    }
 
     @Test
     public void test1() {
