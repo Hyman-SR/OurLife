@@ -13,7 +13,8 @@ public class SortUtils {
 
     public static void main(String[] args) {
         int[] array = {99, 88, 100, 77, 66, 33, 44, 22, 11};
-        System.out.println(Arrays.toString(quickSort(array, 0, array.length - 1)));
+        System.out.println(Arrays.toString(heapSort(array)));
+//        System.out.println(Arrays.toString(quickSort(array, 0, array.length - 1)));
     }
 
     /**
@@ -219,11 +220,11 @@ public class SortUtils {
 
     /**
      * 快速排序(升序)
-     *
+     * <p>
      * 算法分析：T(n)=O(nlog n);最差情况：T(n)=O(n^2);平均情况：T(n)=o(nlog n)
      * 空间复杂度：O(log n)
      * 内存排序
-     *
+     * <p>
      * 算法描述：
      * 1.从数列中挑出一个元素，成为"基准" pivot
      * 2.重新排序数列，所有元素比基准值小的摆放在基准前，所有元素比基准值大的摆在基准后。在这个分区退出后，该基准就处于数列的中间位置，这个成为分区操作
@@ -269,6 +270,68 @@ public class SortUtils {
         }
         return smallIndex;
     }
+
+    /**
+     * 堆排序(升序) 参考：https://www.cnblogs.com/guoyaohua/p/8595289.html
+     *
+     * @param array
+     * @return
+     */
+    public static int[] heapSort(int[] array) {
+        len = array.length;
+        if (len < 1) {
+            return array;
+        }
+        //构建一个最大堆
+        buildMaxHeap(array);
+        //循环将堆首位(最大值)与末位交换，然后再重新调整最大堆
+        while (len > 0) {
+            swapValuesInArray(array, 0, len - 1);
+            len--;
+            adjustHeap(array, 0);
+        }
+        return array;
+    }
+
+    /**
+     * 记录堆排序中数组的长度
+     */
+    private static int len;
+
+    /**
+     * 构建最大堆
+     *
+     * @param array
+     */
+    private static void buildMaxHeap(int[] array) {
+        for (int i = (len / 2 - 1); i >= 0; i--) {
+            adjustHeap(array, i);
+        }
+    }
+
+    /**
+     * 调整为最大堆
+     *
+     * @param array
+     * @param i
+     */
+    private static void adjustHeap(int[] array, int i) {
+        int maxIndex = i;
+        //如果有左子树，且左子树大于父节点，则将最大指针指向左子树
+        if (i * 2 < len && array[i * 2] > array[maxIndex]) {
+            maxIndex = i * 2;
+        }
+        //如果有右子树，且右子树大于父节点，则将最大指针指向右子树
+        if (i * 2 + 1 < len && array[i * 2 + 1] > array[maxIndex]) {
+            maxIndex = i * 2 + 1;
+        }
+        //如果父节点不是最大值，则将父节点与最大值交换，并递归调整父节点交换的位置
+        if (maxIndex != i) {
+            swapValuesInArray(array, maxIndex, i);
+            adjustHeap(array, maxIndex);
+        }
+    }
+
 
 
 }
