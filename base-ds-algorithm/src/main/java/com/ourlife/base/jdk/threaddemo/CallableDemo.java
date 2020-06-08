@@ -1,4 +1,4 @@
-package com.ourlife.base.jdk;
+package com.ourlife.base.jdk.threaddemo;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;

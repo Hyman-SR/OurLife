@@ -87,7 +87,7 @@ public class BlockingQueueDemo {
         System.out.println("peekResult : " + peekResult1);
         */
 
-        // 可设置时间，每个timeout offer一个元素
+        // 可设置时间，每隔timeout offer一个元素
         boolean offerResult1 = blockingQueue.offer("c", 2L, TimeUnit.SECONDS);
         boolean offerResult2 = blockingQueue.offer("c", 2L, TimeUnit.SECONDS);
         boolean offerResult3 = blockingQueue.offer("c", 2L, TimeUnit.SECONDS);
