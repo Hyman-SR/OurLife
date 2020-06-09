@@ -24,6 +24,13 @@ import java.util.concurrent.TimeUnit;
  *  如果当前运行的线程数大于corePoolSize，那么这个线程会被停掉
  *  所以线程池的所有任务完成后它最终会收缩到corePoolSize的大小
  *
+ *  线程池参数如何合理设置？
+ *  CPU密集型：即该任务需要大量的运损，没有阻塞(IO:磁盘IO，网络IO)，CPU一直全速运行，此类业务只有在真正的多核CPU上才可以通过多线程去做加速
+ *      参考公式：CPU核数 + 1
+ *  IO密集型：即该任务需要大量的IO，即大量的阻塞
+ *      参考公式：CPU核数 / (1-阻塞系数)  ，阻塞系数在0.8 ~ 0.9之间
+ *      如：8核CPU ： 8 / (1-0.9) = 80个线程数
+ *
  *  JDK内置的拒绝策略(生产环境避免使用AbortPolicy，线程超卖后，让你怀疑人生，建议使用第二种：CallerRunsPolicy)：
  *  1.AbortPolicy(默认)：直接抛出RejectedExecutionException异常阻止系统正常运行
  *  2.CallerRunsPolicy："调度者运行"一种调节机制，该策略既不会抛弃任务，也不会抛出异常，而是将某些任务回退到调用者，从而降低新任务的流量
