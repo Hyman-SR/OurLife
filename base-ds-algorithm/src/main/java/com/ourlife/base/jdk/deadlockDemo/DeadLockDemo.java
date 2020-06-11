@@ -8,8 +8,8 @@ package com.ourlife.base.jdk.deadlockDemo;
  */
 public class DeadLockDemo {
 
-    private static String A = "A";
-    private static String B = "B";
+    private static String A = "a";
+    private static String B = "b";
 
     public static void main(String[] args) {
         new DeadLockDemo().deadLock();
@@ -17,23 +17,29 @@ public class DeadLockDemo {
 
     private void deadLock() {
         new Thread(() -> {
+            System.out.println(Thread.currentThread().getName() + "\t 请求获取锁A");
             synchronized (A) {
+                System.out.println(Thread.currentThread().getName() + "\t 成功获取锁A");
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                System.out.println(Thread.currentThread().getName() + "\t 请求获取锁B");
                 synchronized (B) {
-                    System.out.println("Thread 1");
+                    System.out.println(Thread.currentThread().getName() + "\t 成功获取锁B");
                 }
             }
-        }).start();
+        }, "A").start();
         new Thread(() -> {
+            System.out.println(Thread.currentThread().getName() + "\t 请求获取锁B");
             synchronized (B) {
+                System.out.println(Thread.currentThread().getName() + "\t 成功获取锁B");
+                System.out.println(Thread.currentThread().getName() + "\t 请求获取锁A");
                 synchronized (A) {
-                    System.out.println("Thread 2");
+                    System.out.println(Thread.currentThread().getName() + "\t 成功获取锁A");
                 }
             }
-        }).start();
+        }, "B").start();
     }
 }
