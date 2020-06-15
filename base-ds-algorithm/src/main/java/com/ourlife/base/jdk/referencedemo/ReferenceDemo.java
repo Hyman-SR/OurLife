@@ -1,7 +1,10 @@
 package com.ourlife.base.jdk.referencedemo;
 
+import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.WeakHashMap;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -11,9 +14,74 @@ import java.util.concurrent.TimeUnit;
 public class ReferenceDemo {
 
     public static void main(String[] args) {
-        strongReference();
+        myReferenceQueue();
+
+//        myHashMap();
+//        myWeakHashMap();
+
+//        strongReference();
 //        softReference();
 //        weakReference();
+    }
+
+    private static void myReferenceQueue() {
+        Object o1 = new Object();
+        ReferenceQueue<Object> referenceQueue = new ReferenceQueue<>();
+        WeakReference<Object> weakReference = new WeakReference<>(o1, referenceQueue);
+
+        System.out.println(o1);
+        System.out.println(weakReference.get());
+        System.out.println(referenceQueue.poll());
+
+        System.out.println("========GC=======");
+
+        o1 = null;
+        System.gc();
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(o1);
+        System.out.println(weakReference.get());
+        System.out.println(referenceQueue.poll());
+    }
+
+    /**
+     * hashMap 的引用举例
+     */
+    private static void myHashMap() {
+        HashMap<Integer, String> hashMap = new HashMap<>();
+        Integer key = new Integer(2);
+        String value = "hashMap";
+
+        hashMap.put(key, value);
+        System.out.println(hashMap);
+
+        key = null;
+        System.out.println(hashMap);
+
+        System.gc();
+        System.out.println(hashMap + "\t" + hashMap.size());
+    }
+
+    /**
+     * 弱引用的举例。只要GC就会回收
+     */
+    public static void myWeakHashMap() {
+        WeakHashMap<Integer, String> hashMap = new WeakHashMap<>();
+        Integer key = new Integer(2);
+        String value = "weakHashMap";
+
+        hashMap.put(key, value);
+        System.out.println(hashMap);
+
+        key = null;
+        System.out.println(hashMap);
+
+        System.gc();
+        System.out.println(hashMap + "\t" + hashMap.size());
     }
 
     /**
@@ -21,7 +89,7 @@ public class ReferenceDemo {
      */
     private static void strongReference() {
         Object o1 = new Object();
-        Object o2= o1;
+        Object o2 = o1;
 
         o1 = null;
         System.gc();
@@ -57,7 +125,6 @@ public class ReferenceDemo {
         System.out.println("=====GC后(不发生OOM)======");
         System.out.println(object);
         System.out.println(softReference.get());
-
 
 
         Object object1 = new Object();
