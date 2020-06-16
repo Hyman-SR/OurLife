@@ -11,7 +11,9 @@ public class JVMTest {
     public static void main(String[] args) {
         double totalMemory = JVMUtils.getJVMTotalMemory(JVMUtils.SizeUnit.GB);
         double maxMemory = JVMUtils.getJVMMaxMemory(JVMUtils.SizeUnit.GB);
+        double maxDirectMemory = JVMUtils.getMaxDirectMemory(JVMUtils.SizeUnit.GB);
         System.out.println("虚拟机内存总量(-Xms) = " + totalMemory );
         System.out.println("虚拟机最大内存总量(-Xmx) = " + maxMemory );
+        System.out.println("虚拟机最大内存总量(-XX:MaxDirectMemorySize) = " + maxDirectMemory );
     }
 }

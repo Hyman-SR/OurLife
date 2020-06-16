@@ -45,4 +45,14 @@ public class JVMUtils {
         long maxMemory = Runtime.getRuntime().maxMemory();
         return (maxMemory / sizeUnit.getValue());
     }
+
+    /**
+     * 获取虚拟机可以使用的最大本地(直接)内存
+     * @param sizeUnit
+     * @return
+     */
+    public static double getMaxDirectMemory(SizeUnit sizeUnit) {
+        long maxDirectMemory = sun.misc.VM.maxDirectMemory();
+        return (maxDirectMemory / sizeUnit.getValue());
+    }
 }
