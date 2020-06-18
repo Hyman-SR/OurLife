@@ -1,6 +1,6 @@
-package com.ourlife.base.api.service.impl;
+package com.ourlife.base.service.impl;
 
-import com.ourlife.base.api.service.IndexService;
+import com.ourlife.base.service.IndexService;
 import com.ourlife.base.common.util.StringUtils;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.ourlife.base.api.service;
+package com.ourlife.base.service;
 
 /**
  * @author zhangchao

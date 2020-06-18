@@ -1,6 +1,6 @@
 package com.ourlife.base.api.controller;
 
-import com.ourlife.base.api.service.IndexService;
+import com.ourlife.base.service.IndexService;
 import com.ourlife.base.common.constants.ApiPathConstants;
 import com.ourlife.base.common.util.ConditionsUtils;
 import com.ourlife.base.common.vo.BaseResult;
