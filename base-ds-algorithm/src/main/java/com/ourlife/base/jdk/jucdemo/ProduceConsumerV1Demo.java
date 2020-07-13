@@ -1,4 +1,4 @@
-package com.ourlife.base.jdk.jucDemo;
+package com.ourlife.base.jdk.jucdemo;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;

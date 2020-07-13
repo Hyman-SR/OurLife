@@ -1,4 +1,4 @@
-package com.ourlife.base.leetcode;
+package com.ourlife.base.leetcode.p1;
 
 import javafx.util.Pair;
 

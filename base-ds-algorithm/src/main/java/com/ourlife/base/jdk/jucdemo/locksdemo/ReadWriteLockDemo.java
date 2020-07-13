@@ -1,4 +1,4 @@
-package com.ourlife.base.jdk.jucDemo.locksdemo;
+package com.ourlife.base.jdk.jucdemo.locksdemo;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.ourlife.base.jdk.jucDemo;
+package com.ourlife.base.jdk.jucdemo;
 
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;

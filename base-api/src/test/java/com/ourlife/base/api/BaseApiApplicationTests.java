@@ -5,15 +5,28 @@ import com.ourlife.base.core.service.RedisService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.http.*;
+import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 @SpringBootTest
 class BaseApiApplicationTests {
 
+    @Bean
+    public RestTemplate getRestTemplate() {
+        return new RestTemplate();
+    }
+
     @Autowired
     private RedisService redisService;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Resource(name = "redisDistributeLock")
     private DistributeLock distributeLock;
@@ -24,10 +37,7 @@ class BaseApiApplicationTests {
 
     @Test
     public void test1() {
-//        redisService.set("stringKey1", "stringValue1");
-//        redisService.set("stringKey2", "stringValue2", 100);
-        String value2 = (String) redisService.get("stringKey1");
-        System.out.println("set 完成" + value2);
+
     }
 
     @Test

@@ -10,11 +10,13 @@ import java.util.concurrent.TimeUnit;
  */
 public class CallableDemo {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         //执行callable的线程需要依赖FutureTask(同时支持Runnable和Callable)，获取这个线程的执行结果最好放到最后，负责会阻塞主线程
         //注：多个线程执行同一个futureTask，只会有一个线程执行成功，不会共同执行
         FutureTask<Integer> futureTask = new FutureTask<>(new MyThread());
+        FutureTask<Integer> futureTask1 = new FutureTask<>(new MyThread());
         new Thread(futureTask, "A").start();
+        new Thread(futureTask1, "B").start();
 
         //主线程继续执行其他不依赖的任务
         System.out.println("main thread do else task");
@@ -23,6 +25,8 @@ public class CallableDemo {
         while (!futureTask.isDone()) {
 
         }
+        Integer sum = futureTask.get() + futureTask1.get();
+        System.out.println("sum=" + sum);
         System.out.println("futureTask do complete, and do next task");
         System.out.println("all task done");
 
