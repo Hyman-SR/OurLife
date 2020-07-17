@@ -16,6 +16,7 @@ public class ConnectionUtils {
 
     /**
      * 获取MQ的连接
+     *
      * @return
      */
     public static Connection getConnection() throws IOException, TimeoutException {

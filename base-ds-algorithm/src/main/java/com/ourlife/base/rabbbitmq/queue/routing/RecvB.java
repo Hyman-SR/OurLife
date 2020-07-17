@@ -1,50 +1,54 @@
-package com.ourlife.base.rabbbitmq.workfair;
+package com.ourlife.base.rabbbitmq.queue.routing;
 
 import com.ourlife.base.rabbbitmq.ConnectionUtils;
 import com.rabbitmq.client.*;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /**
  * @author zhangchao
- * @createdOn 2020/7/13
+ * @createdOn 2020/7/16
  */
-public class ReceiveMessageA {
+public class RecvB {
 
-    public static final String QUEUE_NAME = "test_work_fair_queue";
+    public static final String EXCHANGE_NAME = "test_exchange_direct";
+    public static final String QUEUE_NAME = "test_queue_direct_B";
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException, TimeoutException {
         Connection connection = ConnectionUtils.getConnection();
         Channel channel = connection.createChannel();
+
+        channel.exchangeDeclare(EXCHANGE_NAME, "direct");
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+
         //每个消费者发送确认消息之前，消息队列不发送下一个消息到消费者，一次只处理一个消息，目的是限制发送给同一个消费者不得超过一条消息
-        int prefetchCount = 1;
-        channel.basicQos(prefetchCount);
-        //定义消费者
+        channel.basicQos(1);
+
+        String routingKey = "B";
+        channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, routingKey);
+
         DefaultConsumer consumer = new DefaultConsumer(channel) {
-            // TODO 基于spring的事件模型，如何理解？
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope,
-                                       AMQP.BasicProperties properties,
-                                       byte[] body) throws IOException {
+                                       AMQP.BasicProperties properties, byte[] body) throws IOException {
 
                 String msg = new String(body, "utf-8");
-                System.out.println("A : receive message ==> " + msg);
+                System.out.println("B recv msg ==> " + msg);
+
                 try {
-                    TimeUnit.SECONDS.sleep(2);
+                    TimeUnit.MILLISECONDS.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
-                    System.out.println("A : done");
+                    System.out.println("B done");
                     channel.basicAck(envelope.getDeliveryTag(), false);
                 }
             }
         };
 
-        //监听队列
         boolean autoAck = false;
         channel.basicConsume(QUEUE_NAME, autoAck, consumer);
     }
 }
-

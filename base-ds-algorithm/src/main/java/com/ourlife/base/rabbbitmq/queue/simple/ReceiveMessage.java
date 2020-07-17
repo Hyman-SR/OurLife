@@ -1,4 +1,4 @@
-package com.ourlife.base.rabbbitmq.simple;
+package com.ourlife.base.rabbbitmq.queue.simple;
 
 import com.ourlife.base.rabbbitmq.ConnectionUtils;
 import com.rabbitmq.client.*;

@@ -1,4 +1,4 @@
-package com.ourlife.base.rabbbitmq.work;
+package com.ourlife.base.rabbbitmq.queue.work.workUnfair;
 
 import com.ourlife.base.rabbbitmq.ConnectionUtils;
 import com.rabbitmq.client.*;
@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  * @author zhangchao
  * @createdOn 2020/7/13
  */
-public class ReceiveMessageB {
+public class ReceiveMessageA {
 
     public static final String QUEUE_NAME = "test_work_queue";
 
@@ -27,9 +27,9 @@ public class ReceiveMessageB {
                                        byte[] body) throws IOException {
 
                 String msg = new String(body, "utf-8");
-                System.out.println("B : receive message ==> " + msg);
+                System.out.println("A : receive message ==> " + msg);
                 try {
-                    TimeUnit.SECONDS.sleep(2);
+                    TimeUnit.SECONDS.sleep(1);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -40,3 +40,4 @@ public class ReceiveMessageB {
         channel.basicConsume(QUEUE_NAME, true, consumer);
     }
 }
+

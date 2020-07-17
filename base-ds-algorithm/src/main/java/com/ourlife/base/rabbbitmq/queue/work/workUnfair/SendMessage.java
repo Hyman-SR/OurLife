@@ -1,4 +1,4 @@
-package com.ourlife.base.rabbbitmq.work;
+package com.ourlife.base.rabbbitmq.queue.work.workUnfair;
 
 import com.ourlife.base.rabbbitmq.ConnectionUtils;
 import com.rabbitmq.client.Channel;
@@ -7,6 +7,8 @@ import com.rabbitmq.client.Connection;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 非公平的工作队列：多个消费者消费数量一致
+ *
  * @author zhangchao
  * @createdOn 2020/7/13
  */

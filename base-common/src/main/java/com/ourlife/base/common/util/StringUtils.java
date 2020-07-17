@@ -2,8 +2,6 @@ package com.ourlife.base.common.util;
 
 import com.ourlife.base.common.exception.BaseException;
 import com.ourlife.base.common.vo.ResultCode;
-import com.sun.tools.javac.util.Convert;
-import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,7 +12,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.*;
 
 /**
  * 字符串的工具类
