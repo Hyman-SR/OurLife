@@ -12,8 +12,8 @@ import java.util.concurrent.TimeUnit;
 public class BlockingQueueDemo {
 
     public static void main(String[] args) throws Exception {
-//       testArrayBlockingQueue();
-        testSynchronousQueue();
+       testArrayBlockingQueue();
+//        testSynchronousQueue();
     }
 
     public static void testSynchronousQueue() throws Exception {

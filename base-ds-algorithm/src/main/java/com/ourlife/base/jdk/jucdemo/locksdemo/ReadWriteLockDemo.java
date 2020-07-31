@@ -71,8 +71,8 @@ class MycacheNoLock {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        map.get(key);
-        System.out.println(Thread.currentThread().getName() + "\t 读取完成");
+        Integer value = (Integer) map.get(key);
+        System.out.println(Thread.currentThread().getName() + "\t 读取完成, value = " + value);
     }
 }
 
@@ -113,8 +113,8 @@ class MycacheNoLockWithLock {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            map.get(key);
-            System.out.println(Thread.currentThread().getName() + "\t 读取完成");
+            Integer value = (Integer) map.get(key);
+            System.out.println(Thread.currentThread().getName() + "\t 读取完成, value = " + value);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -160,8 +160,8 @@ class MycacheNoLockWithReentrantReadWriteLock {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            map.get(key);
-            System.out.println(Thread.currentThread().getName() + "\t 读取完成");
+            Integer value = (Integer) map.get(key);
+            System.out.println(Thread.currentThread().getName() + "\t 读取完成, value = " + value);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

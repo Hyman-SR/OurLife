@@ -198,7 +198,7 @@ public class SortUtils {
      * @param right
      * @return
      */
-    private static int[] merge(int[] left, int[] right) {
+    public static int[] merge(int[] left, int[] right) {
         int[] result = new int[left.length + right.length];
         for (int index = 0, i = 0, j = 0; index < result.length; index++) {
             if (i >= left.length) {
