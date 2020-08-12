@@ -2,6 +2,7 @@ package com.ourlife.base.jdk.niodemo;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
@@ -43,6 +44,7 @@ public class NonBlockingNIOServer {
                 } else if (next.isReadable()) {
                     //获取当前选择器上"读就绪"状态的通道
                     SocketChannel sChannel = (SocketChannel) next.channel();
+                    Socket socket = sChannel.socket();
                     //读取数据
                     ByteBuffer buff = ByteBuffer.allocate(2014);
                     int len = 0;

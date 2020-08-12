@@ -2,6 +2,7 @@ package com.ourlife.base.jdk.niodemo;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 import java.util.Scanner;
@@ -27,6 +28,7 @@ public class NonBlockingNIOClient {
     public static void main(String[] args) throws IOException {
         //获取通道
         SocketChannel sChannel = SocketChannel.open(new InetSocketAddress("127.0.0.1", 9090));
+        Socket socket = sChannel.socket();
         //切换非阻塞模式
         sChannel.configureBlocking(false);
         //分配指定大小的缓冲区
