@@ -39,7 +39,7 @@ class MyThread implements Callable<Integer> {
     public Integer call() throws Exception {
         System.out.println("正在执行futureTask。。。。");
         //休眠5秒，标表示该线程执行任务的耗时
-        TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(2);
         return 2002;
     }
 }

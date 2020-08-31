@@ -106,6 +106,12 @@ public class _2_两数相加 {
 class ListNode {
     int val;
     ListNode next;
+    boolean flag;
+
+    ListNode(int x, boolean flag) {
+        val = x;
+        this.flag = flag;
+    }
 
     ListNode(int x) {
         val = x;

@@ -61,6 +61,7 @@ class ShareData {
         try {
             //当不由A执行时，就等待
             while (number != 1) {
+                System.out.println("cA.await()");
                 cA.await();
             }
             for (int i = 0; i < 5; i++) {
@@ -81,6 +82,7 @@ class ShareData {
         try {
             //当不由B执行时，就等待
             while (number != 2) {
+                System.out.println("cB.await()");
                 cB.await();
             }
             for (int i = 0; i < 10; i++) {
@@ -101,6 +103,7 @@ class ShareData {
         try {
             //当不由A执行时，就等待
             while (number != 3) {
+                System.out.println("cC.await()");
                 cC.await();
             }
             for (int i = 0; i < 15; i++) {

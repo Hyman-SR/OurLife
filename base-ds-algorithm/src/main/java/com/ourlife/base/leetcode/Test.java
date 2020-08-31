@@ -1,8 +1,7 @@
 package com.ourlife.base.leetcode;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author zhangchao
@@ -11,9 +10,11 @@ import java.util.Map;
 public class Test {
 
     public static void main(String[] args) {
-        int[] nums = new int[]{2, 7, 11, 15};
-        int target = 9;
-        System.out.println(Arrays.toString(twoSum(nums, target)));
+        String s= "1212";
+        System.out.println((s + s).indexOf(s, 1) != s.length());
+//        int[] nums = new int[]{2, 7, 11, 15};
+//        int target = 9;
+//        System.out.println(Arrays.toString(twoSum(nums, target)));
     }
 
     public static int[] twoSum(int[] nums, int target) {

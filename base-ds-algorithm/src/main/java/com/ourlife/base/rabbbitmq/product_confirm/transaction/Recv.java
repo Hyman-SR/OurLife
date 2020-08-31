@@ -16,7 +16,7 @@ public class Recv {
 
     public static final Logger log = LoggerFactory.getLogger(Send.class);
     public static final String EXCHANGE_NAME = "test_topic_confirm";
-    public static final String QUEUE_NAME = "test.tx.queue";
+    public static final String QUEUE_NAME = "test.tx.stack";
 
     public static void main(String[] args) throws IOException, TimeoutException {
         Connection connection = ConnectionUtils.getConnection();

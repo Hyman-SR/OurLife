@@ -18,7 +18,7 @@ public final class MqConstants {
     /**
      * 直接交换机关联的队列
      */
-    public static final String DIRECT_QUEUE_A = "base.direct.queue.A";
+    public static final String DIRECT_QUEUE_A = "base.direct.stack.A";
 
     /**
      * 直连交换机的路由键
